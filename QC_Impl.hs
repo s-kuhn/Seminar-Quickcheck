@@ -36,8 +36,7 @@ instance Arbitrary a => Arbitrary [a] where
 instance (Arbitrary a, Arbitrary b) => Arbitrary (Either a b) where
    arbitrary = do b <- randomIO
                   if b
-                    then do l <- arbitrary
-                            return $ Left l
+                    then do Left <$> arbitrary
                     else do r <- arbitrary
                             return $ Right r
 
@@ -93,5 +92,3 @@ prop2 s = count s == count (reverse s)
 -- NOTE: This property does not hold in general!
 prop3 :: String -> Bool
 prop3 s = 2 * count s == count (s ++ s)
-
-
