@@ -4,9 +4,9 @@
 ### Einführung
 - Bibliothek für zufälliges Testen der Programm**eigenschaften**.
 - automatische Testgenerierung
-- man definiert Eigenschaften, welche die Funktionen erfüllen sollen (Sortierfunktion soll sortierte Liste zurückgeben).
-- Eine Eigenschaft eines ist eine Beobachtung von der wir erwarten, dass sie egal der Eingabe wahr ist (Die Länge eines Stings bleibt nach Anwendung von `reverse` gleich).
-- bei einem Fehler wird versucht das Problem einzugrenzen
+- Man definiert Eigenschaften, welche die Funktionen erfüllen sollen (Sortierfunktion soll sortierte Liste zurückgeben).
+- Eine Eigenschaft eines ist eine Beobachtung von der wir erwarten, dass sie egal der Eingabe wahr ist (Die Länge eines Strings bleibt nach Anwendung von `reverse` gleich).
+- Bei einem Fehler wird versucht das Problem einzugrenzen (shrinking).
 - Erste Implementierung von QuickCheck in Haskell und inzwischen in über 30 Sprachen übernommen.
 
 ### Vorraussetzungen
@@ -19,9 +19,10 @@ Code Coverage (optional):
 ```
 stack test --coverage
 ```
+// TODO: stack anschauen
 
 ### Generators
-- Werden verwendet um Werte zu erzeugen
+Werden verwendet um Werte zu erzeugen
 ```
 -- generate :: Gen a -> IO a
 
@@ -35,9 +36,9 @@ generate $ choose ('a', 'z')
 generate $ return 1
 ```
 
-### Arbitraty
+### Arbitrary
 - Produziert Generators
-- Stellt standard Generatoren für basic typen.
+- Stellt Standardgeneratoren für basic Typen.
 
 ```
 generate (arbitrary :: Gen Bool)
